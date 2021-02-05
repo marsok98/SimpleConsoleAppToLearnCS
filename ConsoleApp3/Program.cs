@@ -6,22 +6,10 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            string napis;
-            ComplexNumber x = new ComplexNumber();
-            ComplexNumber y = new ComplexNumber();
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("First ingredients");
-            napis = Console.ReadLine();
-            x.ReadTheNumber(napis);
+            Console.WriteLine("Tell expression");
+            ComplexExpression z = new ComplexExpression(Console.ReadLine());
 
-            Console.WriteLine("Second ingredients");
-            napis = Console.ReadLine();
-            y.ReadTheNumber(napis);
-
-            ComplexNumber z = new ComplexNumber();
-            z = x + y;
-            Console.WriteLine("Wynik");
-            z.DisplayTheNumber();
+            z.result.DisplayTheNumber();
 
         }
     }

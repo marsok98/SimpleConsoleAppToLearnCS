@@ -21,6 +21,10 @@ namespace ConsoleApp3
             this.imaginary = 0;
         }
         
+        public ComplexNumber(string number)
+        {
+            ReadTheNumber(number);
+        }
         public double Module()
         {
             return Math.Pow(this.real, 2) + Math.Pow(this.imaginary, 2);
@@ -59,8 +63,6 @@ namespace ConsoleApp3
         {
             string loadedRealString = null;
             string loadedImaginaryString = null;
-            double real = 0;
-            double imaginary = 0;
             bool beginWasFound = false;
             bool breakWasFound = false;
             bool jWasFound = false;
