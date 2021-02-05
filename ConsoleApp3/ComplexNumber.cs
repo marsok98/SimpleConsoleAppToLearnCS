@@ -20,6 +20,7 @@ namespace ConsoleApp3
             this.real = 0;
             this.imaginary = 0;
         }
+        
         public double Module()
         {
             return Math.Pow(this.real, 2) + Math.Pow(this.imaginary, 2);
@@ -29,6 +30,17 @@ namespace ConsoleApp3
         {
             double minusImaginary = (-1) * this.real;
             return new ComplexNumber(real, minusImaginary);
+        }
+
+        public ComplexNumber DivideByDouble(double divider)
+        {
+            ComplexNumber result = new ComplexNumber();
+            if(divider!=0)
+            {
+                result.real = this.real / divider;
+                result.imaginary = this.imaginary / divider;
+            }
+            return result;  
         }
 
         public void DisplayTheNumber()
@@ -86,7 +98,7 @@ namespace ConsoleApp3
         {
             return new ComplexNumber(com1.real + com2.real, com1.imaginary + com2.imaginary);
         }
-        public static ComplexNumber operator -(ComplexNumber com1, ComplexNumber com2)
+        public static ComplexNumber operator -( ComplexNumber  com1, ComplexNumber com2)
         {
             return new ComplexNumber(com1.real - com2.real, com1.imaginary - com2.imaginary);
         }
@@ -102,12 +114,30 @@ namespace ConsoleApp3
         public static ComplexNumber operator /(ComplexNumber com1, ComplexNumber com2)
         {
             ComplexNumber result = new ComplexNumber();
-            result.real = (com1.real * com2.real) - (com1.imaginary * com2.imaginary);
-            result.imaginary = (com2.imaginary * com1.real) + (com1.imaginary * com2.real);
+            ComplexNumber numerator = new ComplexNumber();
+            double denominator;
+
+            numerator = com1 * com2.Conjugation();
+            denominator = com2.Module();
+
+            result = numerator.DivideByDouble(denominator);
             return result;
         }
 
-        //dodac dzielenie przez double, dzielenie liczby przez liczbe
+        public static bool operator == (ComplexNumber com1, ComplexNumber com2)
+        {
+            if (com1.real == com2.real && com1.imaginary == com2.imaginary) return true;
+            else return false;
+        }
+
+        public static bool operator !=(ComplexNumber com1, ComplexNumber com2)
+        {
+            if (com1.real != com2.real || com1.imaginary != com2.imaginary) return true;
+            else return false;
+        }
+
+
+        
 
 
 
