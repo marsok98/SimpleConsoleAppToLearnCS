@@ -27,6 +27,8 @@ namespace ConsoleApp3
                 case '/': op = operation.divide;    break;
                 default:  op = operation.nothing;   break;
             }
+            if (op == operation.nothing) throw new ExceptionOfOperation("There is no correct sign");
+
         }
         public Operation() { op = operation.nothing; }
     }

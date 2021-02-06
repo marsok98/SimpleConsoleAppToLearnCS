@@ -73,7 +73,7 @@ namespace ConsoleApp3
             this.operation = mathOperation;
             this.calculate();
         }
-        public ComplexExpression(string line)
+        public  ComplexExpression(string line)
         {
             int downLimit = 5;
             int indexOfSign = 0;
@@ -96,12 +96,26 @@ namespace ConsoleApp3
                 sign = line[indexOfSign];
                 secondArg = line.Substring(indexOfSign + 1);
 
-                argument1 = new ComplexNumber(firstArg);
-                argument2 = new ComplexNumber(secondArg);
-                operation = new Operation(sign);
-                calculate();
+                try
+                {
+                    argument1 = new ComplexNumber(firstArg);
+                    argument2 = new ComplexNumber(secondArg);
+                    operation = new Operation(sign);
+                    calculate();
+                }
+                catch(ExceptionOfComplexNumber e1)
+                {
+                    throw new ExceptionOfComplexExpression(e1.Message);
+                }
+                catch(ExceptionOfOperation e2)
+                {
+                    throw new ExceptionOfComplexExpression(e2.Message);
+                }
             }
-
+            else
+            {
+                throw new ExceptionOfComplexExpression("There is no sign between complex numbers");
+            }
 
 
         }

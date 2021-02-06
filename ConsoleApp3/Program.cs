@@ -14,27 +14,54 @@ namespace ConsoleApp3
 
             //Console.WriteLine("Tell expression");
             //ComplexExpression z = new ComplexExpression(Console.ReadLine());
+            
+                        string filePathToSolve = @"C:\pliki_CS\toSolve.txt";
+                        //string filePathSolved = @"C:\pliki_CS\solved.txt";
 
-            string filePathToSolve = @"C:\pliki_CS\toSolve.txt";
-            string filePathSolved = @"C:\pliki_CS\solved.txt";
+                        List<string> equations = new List<string>();
+                        equations = File.ReadAllLines(filePathToSolve).ToList();
 
-            List<string> equations = new List<string>();
-            equations = File.ReadAllLines(filePathToSolve).ToList();
+                        List < ComplexExpression >  expresions = new List<ComplexExpression>();
 
-            List < ComplexExpression >  expresions = new List<ComplexExpression>();
+                        foreach (String equation in equations)
+                        {
+                            try
+                            {
+                    expresions.Add(new ComplexExpression(equation));
+                }
+                            catch(ExceptionOfComplexExpression ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                        }
 
-            foreach (String equation in equations)
+                        foreach (ComplexExpression i in expresions )
+                        {
+                            i.Result.DisplayTheNumber();
+                        }
+
+            
+           /* ComplexNumber y = new ComplexNumber(2,3);
+            List<ComplexNumber> T = new List<ComplexNumber>();
+            try
             {
-                expresions.Add(new ComplexExpression(equation));
+                ComplexNumber z = new ComplexNumber(Console.ReadLine());
+                T.Add(z);
             }
-
-            foreach (ComplexExpression i in expresions )
+            catch(Exception ex)
             {
-                i.Result.DisplayTheNumber();
+                Console.WriteLine("jeblo");
             }
+            
+            T.Add(y);
+           
 
 
-
+            foreach (ComplexNumber i in T)
+            {
+                i.DisplayTheNumber();
+            }
+           */
 
         }
     }

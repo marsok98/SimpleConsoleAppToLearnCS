@@ -33,7 +33,7 @@ namespace ConsoleApp3
         
         public ComplexNumber(string number)
         {
-            ReadTheNumber(number);
+            if (!ReadTheNumber(number)) throw new ExceptionOfComplexNumber("Wrong number has been written");
         }
         public double Module()
         {
@@ -90,7 +90,6 @@ namespace ConsoleApp3
             }
             else
             {
-                Console.WriteLine("You have written wrong number");
                 return false;
             }
         }
