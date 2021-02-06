@@ -6,11 +6,33 @@ namespace ConsoleApp3
 {
     class ComplexExpression
     {
-        
-        ComplexNumber argument1 = new ComplexNumber();
-        Operation operation = new Operation();
-        ComplexNumber argument2 = new ComplexNumber();
-        public ComplexNumber result = new ComplexNumber();
+
+        ComplexNumber argument1;
+        Operation operation;
+        ComplexNumber argument2;
+        ComplexNumber result;
+
+        public ComplexNumber Argument1
+        {
+            get => argument1;
+            set => argument1 = value;
+        }
+        public ComplexNumber Argument2
+        {
+            get => argument1;
+            set => argument1 = value;
+        }
+        public Operation Operation
+        {
+            get => operation;
+            set => operation = value;
+        }
+        public ComplexNumber Result
+        {
+            get { return result; }
+            set => result = value;
+        }
+
         public void calculate()
         {
             switch(operation.op)
@@ -43,7 +65,7 @@ namespace ConsoleApp3
             }
         }
 
-
+        
         public ComplexExpression(ComplexNumber arg1, Operation mathOperation, ComplexNumber arg2)
         {
             this.argument1 = arg1;
@@ -73,7 +95,6 @@ namespace ConsoleApp3
                 firstArg = line[0..(indexOfSign)];
                 sign = line[indexOfSign];
                 secondArg = line.Substring(indexOfSign + 1);
-
 
                 argument1 = new ComplexNumber(firstArg);
                 argument2 = new ComplexNumber(secondArg);

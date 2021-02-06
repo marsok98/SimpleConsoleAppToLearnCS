@@ -6,8 +6,18 @@ namespace ConsoleApp3
 {
     class ComplexNumber
     {
-        double real { get; set; }
-        double imaginary { get; set; }
+        double real;
+        double imaginary;
+        public double Real
+        {
+            get => real;
+            set => real = value;
+        }
+        public double Imaginary
+        {
+            get => imaginary;
+            set => imaginary = value;
+        }
 
         public ComplexNumber(double re, double im)
         {
@@ -34,17 +44,6 @@ namespace ConsoleApp3
         {
             double minusImaginary = (-1) * this.real;
             return new ComplexNumber(real, minusImaginary);
-        }
-
-        public ComplexNumber DivideByDouble(double divider)
-        {
-            ComplexNumber result = new ComplexNumber();
-            if(divider!=0)
-            {
-                result.real = this.real / divider;
-                result.imaginary = this.imaginary / divider;
-            }
-            return result;  
         }
 
         public void DisplayTheNumber()
@@ -122,10 +121,22 @@ namespace ConsoleApp3
             numerator = com1 * com2.Conjugation();
             denominator = com2.Module();
 
-            result = numerator.DivideByDouble(denominator);
+            result = numerator/denominator;
             return result;
         }
 
+        public static ComplexNumber operator /(ComplexNumber com1, double divider)
+        {
+            ComplexNumber result = new ComplexNumber();
+            if (divider != 0)
+            {
+                result.real = com1.real / divider;
+                result.imaginary = com1.imaginary / divider;
+            }
+            return result;
+        }
+
+        /*
         public static bool operator == (ComplexNumber com1, ComplexNumber com2)
         {
             if (com1.real == com2.real && com1.imaginary == com2.imaginary) return true;
@@ -137,13 +148,7 @@ namespace ConsoleApp3
             if (com1.real != com2.real || com1.imaginary != com2.imaginary) return true;
             else return false;
         }
-
-
-        
-
-
-
-
+        */
     }
 
    
