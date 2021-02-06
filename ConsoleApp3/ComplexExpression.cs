@@ -119,5 +119,15 @@ namespace ConsoleApp3
 
 
         }
+
+        public string GetComplexExpressionInString()
+        {
+            string expressionInString;
+            expressionInString = argument1.GetComplexNumberInString()
+                + operation.getOperationSignInChar()
+                + argument2.GetComplexNumberInString();
+
+            return expressionInString;
+        }
     }
 }

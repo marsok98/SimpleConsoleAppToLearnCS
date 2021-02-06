@@ -31,5 +31,21 @@ namespace ConsoleApp3
 
         }
         public Operation() { op = operation.nothing; }
+
+        public char getOperationSignInChar()
+        {
+            char signInChar;
+            switch(op)
+            {
+                case operation.add: signInChar = '+';       break;
+                case operation.subtract: signInChar = '-';  break;
+                case operation.multiply: signInChar = '*';  break;
+                case operation.divide: signInChar = '/';    break;
+                default: signInChar = ' '; break;
+            }
+            return signInChar;
+        }
+
+
     }
 }

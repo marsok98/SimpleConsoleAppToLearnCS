@@ -46,16 +46,18 @@ namespace ConsoleApp3
             return new ComplexNumber(real, minusImaginary);
         }
 
-        public void DisplayTheNumber()
+        public string GetComplexNumberInString()
         {
-            if(this.imaginary>0)
+            string numberInString;
+            if(this.imaginary>=0)
             {
-                Console.WriteLine("( " + Convert.ToString(this.real) + '+' + Convert.ToString(this.imaginary) + "j )");
+                numberInString = "(" + Convert.ToString(this.real) + '+' + Convert.ToString(this.imaginary) + "j)";
             }
             else
             {
-                Console.WriteLine("( " + this.real + this.imaginary + "j )");
-            }   
+                numberInString = "(" + this.real + this.imaginary + "j)";
+            }
+            return numberInString;
         }
 
         public bool ReadTheNumber(string loadedString)
